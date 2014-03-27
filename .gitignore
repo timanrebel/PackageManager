@@ -1,3 +1,11 @@
-# Build folder and log file
-build/
-build.log
+tmp
+bin
+build
+*.zip
+.apt_generated
+
+/.project
+
+/.settings/
+
+/build.properties
