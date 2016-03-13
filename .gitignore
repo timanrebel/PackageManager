@@ -3,9 +3,7 @@ bin
 build
 *.zip
 .apt_generated
-
 /.project
-
-/.settings/
-
+/.settings
 /build.properties
+libs/

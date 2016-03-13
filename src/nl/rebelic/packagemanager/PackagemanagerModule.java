@@ -76,5 +76,20 @@ public class PackagemanagerModule extends KrollModule
     private boolean isSystemPackage(PackageInfo pkgInfo) {
         return ((pkgInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0) ? true : false;
     }
+    
+    /**
+     * Returns a "good" intent to launch a front-door activity in a package. This is used, for example, to implement an "open" button when browsing through packages. The current implementation looks first for a main activity in the category CATEGORY_INFO, and next for a main activity in the category CATEGORY_LAUNCHER. Returns null if neither are found.
+     * @param packageName The name of the package to inspect.
+     * @return
+     */
+    @Kroll.method
+    public IntentProxy getLaunchIntentForPackage(String packageName) {
+    	Intent intent = TiApplication.getAppRootOrCurrentActivity().getPackageManager().getLaunchIntentForPackage(packageName);
+    	if(intent != null) {
+    		return new IntentProxy(intent);
+    	}
+    	return null;
+    	
+    }
 }
 
